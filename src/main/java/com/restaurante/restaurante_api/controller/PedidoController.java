@@ -24,6 +24,6 @@ public class PedidoController {
         Cliente joao = new Cliente("João", "joao@gmail.com", "65999319411");
         ativacaoCliente.ativar(joao);
 
-        return "ola tudo otimo";
+        return "ola tudo excelente";
     }
 }
