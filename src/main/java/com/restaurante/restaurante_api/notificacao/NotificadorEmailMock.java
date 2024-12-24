@@ -4,7 +4,7 @@ import com.restaurante.restaurante_api.modelo.Cliente;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-@Profile("dev")
+@Profile("prod")
 @TipoDoNotificador(NivelUrgencia.NORMAL)
 @Component
 public class NotificadorEmailMock implements Notificador {
