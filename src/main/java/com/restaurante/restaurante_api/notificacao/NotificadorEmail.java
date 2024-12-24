@@ -1,6 +1,7 @@
 package com.restaurante.restaurante_api.notificacao;
 
 import com.restaurante.restaurante_api.modelo.Cliente;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
@@ -17,10 +18,8 @@ public class NotificadorEmail implements Notificador {
     private String hostSmtp;
     */
 
-    @Value("${spring.notificador.email.host}")
-    private String host;
-    @Value("${spring.notificador.email.port}")
-    private String port;
+    @Autowired
+    private NotificadorProperties properties;
 
     public NotificadorEmail(){
         System.out.println("NotificadorEmail");
@@ -28,8 +27,8 @@ public class NotificadorEmail implements Notificador {
 
     @Override
     public void notificar(Cliente cliente, String mensagem){
-        System.out.println("Host: " + this.host);
-        System.out.println("Porta: " + this.port);
+        System.out.println("Host: " + properties.getHost());
+        System.out.println("Porta: " + properties.getPorta());
         System.out.printf("Notificando %s através do e-mail %s: %s\n",
                 cliente.getNome(), cliente.getEmail(), mensagem);
     }
