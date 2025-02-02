@@ -1,8 +1,6 @@
-package com.restaurante.restaurante_api.domain.modelo;
+package com.restaurante.domain.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -11,6 +9,7 @@ import java.util.Objects;
 public class Restaurante {
 
     @Id
+    @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nome;
