@@ -1,0 +1,22 @@
+package com.restaurante.jpa;
+
+import com.restaurante.RestauranteApiApplication;
+import com.restaurante.infra.repository.EstadoRepositoryImp;
+import org.springframework.boot.WebApplicationType;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.ConfigurableApplicationContext;
+
+public class ConsultaEstadoMain {
+    public static void main(String[] args){
+        ConfigurableApplicationContext applicationContext = new SpringApplicationBuilder(RestauranteApiApplication.class)
+                .web(WebApplicationType.NONE)
+                .run(args);
+
+        EstadoRepositoryImp estado = applicationContext.getBean(EstadoRepositoryImp.class);
+
+        estado
+                .listar()
+                .forEach(pag -> System.out.printf("%s\n", pag.getNome()));
+
+    }
+}
