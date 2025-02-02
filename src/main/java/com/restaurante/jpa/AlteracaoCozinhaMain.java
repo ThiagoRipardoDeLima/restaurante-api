@@ -2,6 +2,7 @@ package com.restaurante.jpa;
 
 import com.restaurante.RestauranteApiApplication;
 import com.restaurante.domain.model.Cozinha;
+import com.restaurante.infra.repository.CozinhaRepositoryImp;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -12,7 +13,7 @@ public class AlteracaoCozinhaMain {
                 .web(WebApplicationType.NONE)
                 .run(args);
 
-        CadastroCozinha cadastroCozinha = applicationContext.getBean(CadastroCozinha.class);
+        CozinhaRepositoryImp cadastroCozinha = applicationContext.getBean(CozinhaRepositoryImp.class);
 
         Cozinha brasileira = new Cozinha();
         brasileira.setId(1L);
@@ -20,8 +21,8 @@ public class AlteracaoCozinhaMain {
 
         cadastroCozinha.salvar(brasileira);
 
-        cadastroCozinha.listar()
-                .stream()
+        cadastroCozinha
+                .listar()
                 .forEach(cozinha -> System.out.println(cozinha.getId() + " - " + cozinha.getNome()));
 
     }

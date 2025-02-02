@@ -2,6 +2,7 @@ package com.restaurante.jpa;
 
 import com.restaurante.RestauranteApiApplication;
 import com.restaurante.domain.model.Cozinha;
+import com.restaurante.infra.repository.CozinhaRepositoryImp;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -12,7 +13,7 @@ public class BuscaCozinhaMain {
                 .web(WebApplicationType.NONE)
                 .run(args);
 
-        CadastroCozinha cadastroCozinha = applicationContext.getBean(CadastroCozinha.class);
+        CozinhaRepositoryImp cadastroCozinha = applicationContext.getBean(CozinhaRepositoryImp.class);
 
         Cozinha co = cadastroCozinha.buscar(1L);
         System.out.println(co.getId() + " - " + co.getNome());
