@@ -6,7 +6,7 @@ import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
-public class AddCozinhaMain {
+public class ExclusaoCozinhaMain {
     public static void main(String[] args){
         ConfigurableApplicationContext applicationContext = new SpringApplicationBuilder(RestauranteApiApplication.class)
                 .web(WebApplicationType.NONE)
@@ -15,14 +15,9 @@ public class AddCozinhaMain {
         CadastroCozinha cadastroCozinha = applicationContext.getBean(CadastroCozinha.class);
 
         Cozinha brasileira = new Cozinha();
-        brasileira.setNome("Brasileira");
+        brasileira.setId(1L);
 
-        Cozinha japonesa = new Cozinha();
-        japonesa.setNome("Japonesa");
-
-        cadastroCozinha.salvar(brasileira);
-        cadastroCozinha.salvar(japonesa);
-
+        cadastroCozinha.remover(brasileira);
 
         cadastroCozinha.listar()
                 .forEach(cozinha -> System.out.println(cozinha.getId() + " - " + cozinha.getNome()));
